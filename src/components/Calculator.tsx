@@ -1,13 +1,31 @@
 import Header from "./Header";
 import Screen from "./Screen";
-import Buttons from "./Buttons";
+import Keypad from "./Keypad";
+import {
+  HeaderProps,
+  ThemeButtonProps,
+  KeypadProps,
+  ScreenProps,
+} from "../types";
 
-const Calculator: React.FC = (): JSX.Element => {
+const Calculator: React.FC<
+  HeaderProps & ThemeButtonProps & ScreenProps & KeypadProps
+> = ({
+  handleThemeSwitch,
+  headerThemeStyles,
+  themeButtonStyles,
+  screenThemeStyles,
+  keypadThemeStyles,
+}): JSX.Element => {
   return (
     <div className="Calculator">
-      <Header></Header>
-      <Screen></Screen>
-      <Buttons></Buttons>
+      <Header
+        handleThemeSwitch={handleThemeSwitch}
+        headerThemeStyles={headerThemeStyles}
+        themeButtonStyles={themeButtonStyles}
+      ></Header>
+      <Screen screenThemeStyles={screenThemeStyles}></Screen>
+      <Keypad keypadThemeStyles={keypadThemeStyles}></Keypad>
     </div>
   );
 };
